@@ -13,3 +13,5 @@ end
 30.times do |n|
     puts fizz_buzz(n)
 end
+
+puts 2 + 3
