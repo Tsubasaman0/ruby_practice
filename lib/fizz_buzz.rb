@@ -9,10 +9,3 @@ def fizz_buzz(n)
         n.to_s
     end
 end
-
-30.times do |n|
-    puts fizz_buzz(n)
-end
-
-puts 2 + 3
-puts 'add TEST'
