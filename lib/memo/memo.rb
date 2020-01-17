@@ -75,3 +75,39 @@ nums = a.map { |n|
 }
 
 p nums
+
+a = [1, 2, 3, 4, 5, 6, 7, 8]
+
+even_numbers = a.select { |n| n.even? }
+odd_numbers = a.reject { |n| n.even? }
+min_even_numbers = a.find { |n| n.even? }
+
+p even_numbers
+p odd_numbers
+p min_even_numbers
+
+#map(&:□□□)で簡潔に書ける
+
+sum = a.map(&:even?)
+p sum
+
+p a[0..3].include?(2)
+
+
+
+def liquid?(temperature)
+    (0..100).include?(temperature)
+end
+
+puts liquid?(112)
+#case文と(1..19)範囲オブジェクトは併用可
+p (1..5).to_a
+p ('bad'..'baz').to_a
+
+#to_aは範囲オブジェクトを配列に入れる。
+sum = 0
+(1..10).each do |n|
+    sum += n
+end
+
+puts sum
