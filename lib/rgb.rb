@@ -7,4 +7,3 @@ def to_hex(r, g, b)
     end
 end
 
-
