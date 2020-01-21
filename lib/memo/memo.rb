@@ -111,3 +111,41 @@ sum = 0
 end
 
 puts sum
+
+a = [1, 2]
+b = [3, 4]
+
+a.concat(b)
+p a #=> [1,2,3,4]破壊的メソッド
+
+a = [1,2,3,4,]
+b = [1,2,6,7,]
+p a | b
+p a & b
+
+require 'set'
+
+a = Set.new([1, 2, 3])
+b = Set.new([4, 5, 3])
+p a - b
+
+a, *b = 1, 2, 3, 4
+p b
+
+# *マークが付くと米みたいに合体する。溶け込む
+
+a = Array.new(5)
+p a
+
+a = Array.new() {
+    'Array1'
+}
+
+p a
+
+#同じ値で同一のオブジェクトなのか、同じ値で異なるオブジェクトなのか
+
+names = ["Tsubasa", "Maho", 'Iwasawa']
+names.map.with_index { |name, i| puts "#{i}: #{name}"}
+
+puts names.delete_if.with_index { |name, i| puts name.include?('w')}
