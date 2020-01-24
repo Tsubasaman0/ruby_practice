@@ -149,3 +149,113 @@ names = ["Tsubasa", "Maho", 'Iwasawa']
 names.map.with_index { |name, i| puts "#{i}: #{name}"}
 
 puts names.delete_if.with_index { |name, i| puts name.include?('w')}
+
+a = []
+b = [2, 3]
+a.push(*b)
+p a
+
+#pushのいいところは配列に同じ配列として挿入できること※を使って
+
+a = [1, 2, 3]
+p [1, 2, *a, 2, 3]
+#米を使うと忍ばせられる
+
+p %w(
+    apple
+    melon
+    orange
+)
+
+# %記法という書き方がある。場合によっては見やすいのでこれで書く
+a = ["a","23","55","76","19","34"]
+p a[2,4].map!(&:to_i)
+p a
+
+fluits = %w(
+    apple
+    melon
+    orange
+)
+
+puts fluits.map.with_index(1) { |fluit, n| "#{n}: #{fluit}"}
+
+abc = a[1,5].map do |n|
+    n.to_i
+end
+p abc
+
+#引数が２つあれば、ブロック変数をふたつにすると入る
+a2 = [[25,10],[15,10]]
+a3 =[]
+a2.each { |n1, n2| 
+        a3 << n1 * n2
+    }
+p a3
+
+a2.each.with_index(1) do |(width, height), i|
+    puts "width: #{width}, height: #{height}, i: #{i}"
+end
+
+#ブロックローカル変数を使って不具合を防ぐ
+#mapメソッドは返り値があるため、帰ってきた受け皿が必要（変数）
+
+monsters = ["スライム", "スライムナイト", "ドラゴン"]
+
+shutsugen = monsters.map do |monster|
+    "#{monster}"
+end.join("と")
+puts [shutsugen, "があらわれた"]
+
+#メソッドチェーン、あとで習う。続けて書く記法。
+#do endより{}のほうが読みやすい。状況によって見やすい方を書く。
+numbers = [1, 2, 3, 4, 5, 6]
+loop do
+    n = numbers.sample
+    puts n
+    break if n == 5
+end
+
+while true
+    n = numbers.sample
+    break if n == 5
+end
+
+daice = numbers.shuffle
+
+daice.each { |n|
+    puts daice
+    break if n == 5
+}
+
+i =
+while true
+    break "うんこ"
+end
+
+fluits = %w(
+    apple
+    melon
+    orange
+)
+
+numbers = [1,2,3]
+fluits.each do |fluit|
+    numbers.shuffle.each do |i|
+        puts "#{i}: #{fluit}"
+        break if i == 3
+    end
+end
+
+puts "Hello,World"
+
+#returnはメソッドからの脱出してしまうので、挙動が崩れる可能性が高くなるためあまり積極的には使わないようにする
+
+i = 0
+while i < numbers.size
+    n = numbers[i]
+    i += 1
+    next if i.even?
+    puts n
+end
+
