@@ -259,3 +259,52 @@ while i < numbers.size
     puts n
 end
 
+puts {}.class
+
+money = {
+    'japan' => 'yen',
+    'us' => 'doller',
+    'india' => 'rupee'
+}
+puts money["japan"]
+
+money.each { |key, value|
+    puts "#{key}: #{value}"
+}
+
+money.each { |key_value|
+    key   = key_value[0]
+    value = key_value[1]
+    puts "#{key}: #{value} "
+}
+
+a = { "x" => 1, "y" => 2, "z" => 3}
+b = { "y" => 2, "z" => 3, "x" => 10,}
+
+puts a == b
+
+:apple.methods
+'apple'.methods
+
+#シンボルは実は整数であって、文字列ではない
+#破壊的メソッドが適用しない。整数扱いのため。
+
+person = {
+    name: 'Alice',
+    age: 20,
+    friends: ['Bob', 'Carol'],
+    phones: { home: '1234-1234', mobile: '4444-4444' }
+}
+
+puts person[:age]
+puts person[:friends][1]
+puts person[:phones][:mobile]
+
+def buy_burger( menu, drink: true , potato: true )
+    if drink
+    end
+    if potato
+    end 
+end
+
+puts buy_burger( 'cheese', true, true )
