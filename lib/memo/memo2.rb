@@ -12,3 +12,10 @@ fluits.each do |fluit|
         puts "#{fluit},#{n}"
     end
 end
+
+
+def buy_burger(menu, drink: true, potato: true, **otehers)
+    puts otehers
+end
+
+puts buy_burger('fish', drink: true, potato: true, sarad: true)
