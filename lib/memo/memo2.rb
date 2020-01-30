@@ -80,28 +80,54 @@ puts users[0][:first_name]
 
 puts "---------ここからClassの勉強------------\n"
 
+#class User
+#    attr_reader :first_name, :last_name, :age
+#
+#    def initialize( first_name, last_name, age )
+#        @first_name = first_name
+#        @last_name  = last_name
+#        @age        = age
+#    end
+#
+#    def full_name
+#        "#{first_name} #{last_name}"
+#    end
+#
+#end
+
+#users = []
+#users << User.new( 'Alice', 'Ruby', 20 )
+#users << User.new( 'Bob', 'Python', 30 )
+
+
+
+#users.each do |user|
+#    puts "氏名: #{user.full_name} 年齢: #{user.age}"
+#end
+
 class User
-    attr_reader :first_name, :last_name, :age
 
-    def initialize( first_name, last_name, age )
-        @first_name = first_name
-        @last_name  = last_name
-        @age        = age
+    attr_accessor :name
+
+    def initialize( name )
+        @name = name
     end
 
-    def full_name
-        "#{first_name} #{last_name}"
+    def hello
+        shuffle_name = @name.chars.shuffle.join
+        "Hello!, I am #{shuffle_name}."
+    end
+
+    def self.create_users( names )
+        names.map do |name|
+            User.new( name )
+        end
     end
 
 end
+names = ['Alice', 'Bob', 'Carol']
+users = User.create_users( names )
 
-users = []
-users << User.new( 'Alice', 'Ruby', 20 )
-users << User.new( 'Bob', 'Python', 30 )
-
-
-
-users.each do |user|
-    puts "氏名: #{user.full_name} 年齢: #{user.age}"
-end
-
+users.each { |user|
+    puts user.hello
+}
