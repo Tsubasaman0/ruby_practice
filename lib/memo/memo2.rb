@@ -18,9 +18,6 @@ def buy_burger(menu, drink: true, potato: true, **otehers)
     puts otehers
 end
 
-<<<<<<< HEAD
-puts buy_burger('fish', drink: true, potato: true, sarad: true)
-=======
 buy_burger('fish', drink: true, potato: true, sarad: true)
 
 items = { right: 'sword', left: 'shield', head: 'kabuto' }
@@ -134,4 +131,3 @@ users = User.create_users( names )
 users.each { |user|
     puts user.hello
 }
->>>>>>> save
