@@ -124,10 +124,58 @@ class User
         end
     end
 
+    def rename_to_Tsubasa
+        name = 'Tsubasa'
+    end
+
 end
+
+user = User.new('Alice')
+puts user.rename_to_Tsubasa
+
 names = ['Alice', 'Bob', 'Carol']
 users = User.create_users( names )
 
-users.each { |user|
-    puts user.hello
-}
+
+class Product
+
+    attr_reader :name, :price
+
+    def initialize( name, price = DEFAULT_PRICE )
+        @name  = name
+        @price = price
+    end
+
+    def self.format_price(price)
+        "#{price}円"
+    end
+
+    def to_s
+        formatted_price = Product.format_price(price)
+        "name: #{name}, price: #{formatted_price}"
+    end
+end
+
+product =  Product.new( 'A greet movie', 1000 )
+puts product.to_s
+
+class Foo
+
+    3.times {
+        puts 'Hello'
+    }
+    def self.bar
+        puts "クラスメソッド内のself: #{self}"
+    end
+
+    def baz
+        puts "インスタンスメソッド内のself: #{self}"
+    end
+    self.bar
+end
+
+Foo.bar
+
+foo = Foo.new
+foo.baz
+
