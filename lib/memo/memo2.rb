@@ -179,3 +179,30 @@ Foo.bar
 foo = Foo.new
 foo.baz
 
+#class Product
+#    DEFAULT_PRICE = 0
+#    private_constant :DEFAULT_PRICE
+#end
+
+class Product
+    DEFAULT_PRICE = 0
+    NAME          = 'A product'
+    SOME_NAMES    = ['Foo', 'Bar', 'Baz'].map(&:freeze).freeze
+    SOME_PRICE    = { 'Foo' => 1000, 'Bar' => 2000, 'Baz' => 3000 }
+
+    def self.names_without_foo( names = SOME_NAMES )
+        names.delete('Foo')
+        names
+    end
+end
+p Product::SOME_NAMES
+#p Product.names_without_foo
+
+#Product::NAME.upcase!
+#p Product::NAME
+#
+#Product::SOME_NAMES << 'hoge'
+#p Product::SOME_NAMES
+#
+#Product::SOME_PRICE['hoge'] = 4000
+#p Product::SOME_PRICE
