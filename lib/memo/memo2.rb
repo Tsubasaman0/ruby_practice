@@ -206,3 +206,5 @@ p Product::SOME_NAMES
 #
 #Product::SOME_PRICE['hoge'] = 4000
 #p Product::SOME_PRICE
+
+
