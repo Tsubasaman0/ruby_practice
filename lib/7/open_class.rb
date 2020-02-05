@@ -42,9 +42,12 @@ end
 user = User.new('Tsubasa')
 puts user.hello
 
-class User
+class User # 再定義
+
+    alias original_hello hello
+
     def hello
-        "#{@name}さん、こんにちは"
+        "#{original_hello}じゃなくて、#{@name}さん、こんにちは"
     end
 end
 
