@@ -52,3 +52,4 @@ class User # 再定義
 end
 
 puts user.hello
+
