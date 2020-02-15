@@ -24,3 +24,59 @@ end
 puts judge(20)
 puts judge(34)
 puts judge(10)
+
+split_proc = :split.to_proc
+p split_proc.call('a-b-c-d e')
+p split_proc.call('a-b-c-d e', '-')
+p split_proc.call('a-b-c-d e', '-', 3)
+
+def generate_proc(array)
+    counter = 0
+
+    Proc.new do
+        counter += 10
+        array << counter
+    end
+end
+
+values = []
+sample_proc = generate_proc(values)
+p values
+
+p sample_proc.call
+p sample_proc.call
+p values
+
+def proc_return
+    f = Proc.new { |n| return n * 10 }
+    ret = [1, 2, 3].map(&f)
+    "ret: #{ret}"
+end
+
+def lamda_return
+    f = ->(n) { return n * 10 }
+    ret = [1, 2, 3].map(&f)
+    "ret: #{ret}"
+end
+
+p proc_return
+p lamda_return
+
+
+def lamda_break
+    f = ->(n) { break n * 10 }
+    ret = [1, 2, 3].map(&f)
+    "ret: #{ret}"
+end
+
+p lamda_break
+
+def proc_break
+    f = Proc.new { |n| break n * 10 }
+    ret = [1, 2, 3].map(&f)
+    "ret: #{ret}"
+end
+
+p proc_break
+
+# lamdaとProcは使い方すごく似ていて、簡略な書き方に見えがちだけど、別のものなので、細かい違いがあることを理解しておく
