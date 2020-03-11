@@ -18,7 +18,7 @@ def action(symbols)
                 elsif symbols[9] == '+' && symbols[1] == '-'
                     answer <<  $rule[2]
                 elsif symbols[9] == '+' && symbols[1] == '+'
-                    p answer <<  $rule[3]
+                     answer <<  $rule[3]
             end
           elsif n == 9
             if    symbols[8] == '-' && symbols[0] == '-'
