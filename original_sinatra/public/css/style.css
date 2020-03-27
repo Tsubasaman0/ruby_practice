@@ -1,10 +1,18 @@
 * {
     padding: 0;
     margin: 0;
-    font-size: 16px;
     font-family: monospace,sans-serif;
 }
 
+header {
+    height: 80px;
+    width: 100%;
+    background-color: rgb(25, 25, 112);
+    text-align: center;
+    color: #fff;
+    line-height: 80px;
+    font-size: 1.5em;
+}
 
 .container {
     max-width: 600px;
@@ -12,6 +20,7 @@
     margin: auto;
     padding: 30px 10px;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 form {

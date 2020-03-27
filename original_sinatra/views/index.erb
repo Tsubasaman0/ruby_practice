@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public">
-    <title>学習記録</title>
-</head>
-<body>
-    <div class="container">
-        <form action="">
-            <input type="text" >
-            <input type="password">
-        </form>
-    </div>
-</body>
-</html>
+<div class="container">
+    <p class="login-p">ログイン</p>
+    <form action="/signup" method="POST">
+        <div class="input">
+            <input class="input-text" type="text" name="user" placeholder="ID">
+        </div>
+        <div class="input">
+            <input class="input-text" type="password" name="password" placeholder="PassWord">
+        </div>
+        <div class="input">
+            <input id="login" type="submit" value="ログイン" href="/top">
+        </div>
+    </form>
+    <a href="/top">ログイン成功画面</a>
+</div>
