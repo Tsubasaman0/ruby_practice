@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Doodle</title>
+        <style>
+            #mycanvas {
+                border: gray 10px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas width="400" height="200" id="mycanvas"></canvas>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+                var canvas = document.getElementById('mycanvas');
+                if (!canvas || !canvas.getContext)return false;
+                var ctx = canvas.getContext('2d');
+
+                var startX,
+                    startY,
+                    x,
+                    y,
+                    borderWidth = 10;
+                $('#mycanvas').mousedown(function(e){
+                    startX = e.pageX - $(this).offset().left - borderWidth;
+                    startY = e.pageY - $(this).offset().top - borderWidth;
+                })
+                .monsemove(function(e){
+                    x = e.pageX - $(this).offset().left - borderWidth;
+                    y = e.pageY - $(this).offset().top - borderWidth;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                    startX = x;
+                    startY = y;
+                });
+            }); 
+        </script>
+    </body>
+</html>

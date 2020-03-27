@@ -11,17 +11,12 @@ class User
   end
   
   def status
-    message =<<~TEXT
+    puts message =<<~TEXT
         なまえ: #{@name}
         HP   : #{@hp} / #{@max_hp}
         ちから: #{@offense}
         まもり: #{@defense}
-        どうぐ: #{
-            if @item
-                @item.name
-            else
-                'なし'
-            end}
+        どうぐ: #{@item ? @item.name : 'なし'}
         #{$line}
         TEXT
   end
@@ -58,6 +53,31 @@ class User
       end
       @item = nil
   end
+
+  def level_up
+    up_hp      = rand(50..100)
+    up_offense = rand(5..15)
+    up_defense = rand(5..15)
+
+    @max_hp  += up_hp
+    @offense += up_offense
+    @defense += up_defense
+
+    @hp       = @max_hp
+
+    puts message =<<~TEXT
+    #{@name}の　レベルがあがった
+
+    #{$line}
+    なまえ: #{@name}
+    HP    : #{@hp} / #{@max_hp} + #{up_hp}
+    ちから: #{@offense} + #{up_offense}
+    まもり: #{@defense} + #{up_defense}
+    どうぐ: #{@item ? @item.name : 'なし'}
+
+    #{$line}
+    TEXT
+  end
   
     def battle(enemy)
       puts "#{enemy.name} があらわれた"
@@ -89,33 +109,30 @@ class User
                            puts "#{self.item.name} をつかいますか？[Y/N]"
                            puts $line
                            choice = gets.chomp
-                           if choice == 'Y' || choice == "y"
-                               self.use_item(self.item)
-                           elsif choice == 'N' || choice == 'n'
-                               redo
-                           else
-                               puts $error
-                           end
-                       else
-                           puts "どうぐが ありません"
-                           puts $line
-                           redo
                        end
                 when 3 # にげる
                       if rand(1..100) > 70
                           puts "#{self.name}は にげだした"
                           puts $line
                           break
-                          else
+                      else
                           puts "#{self.name}は にげだすことに しっぱいした"
                           enemy.attack(self)
                           redo
-                      end
+                      end # /にげる
             	else
             		puts $error
             	    redo
             end # /case コマンド選択
              enemy.attack(self)
+            if enemy.hp == 0
+                puts "#{enemy.name}を　たおした"
+                 break
+            elsif self.hp == 0
+                puts "#{self.name}は　やられてしまった"
+                puts "ゲームオーバー"
+                break
+            end # / 戦闘結果判定
         end # / while バトルのループ
     end # /def battle
 end # /class User

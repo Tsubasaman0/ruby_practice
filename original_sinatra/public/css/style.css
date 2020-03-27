@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: monospace,sans-serif;
+}
+
+
+.container {
+    max-width: 600px;
+    background-color: rgb(212, 213, 235);
+    margin: auto;
+    padding: 30px 10px;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input {
+    /* CSS リセット*/
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+
+    margin: 5px;
+    padding: 10px;
+    width: 100%;
+
+}
+
+.login-p {
+    text-align: center;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    border-bottom: rgb(25, 25, 112) 1px solid;
+    font-weight: bold;
+}
+
+.input {
+    text-align: center;
+    margin: auto;
+    max-width: 400px;
+    display: flex;
+    width: 100%;
+}
+
+.input-text {
+    background: #fff;
+    border-radius: 15px;
+}
+
+#login {
+    background-color: rgb(25, 25, 112);
+    border-radius: 15px;
+    color: #fff;
+    transition: ease-out 0.2s;
+    box-shadow: rgb(15, 15, 68) 0px 1px 1px 0px;
+    cursor: pointer;
+}
+
+#login:hover {
+    opacity: 0.9;
+    transform: translateY(1px);
+    box-shadow: none;
+}
