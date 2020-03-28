@@ -24,11 +24,14 @@ def dungeon
 
 
 	# キャラクター変数一覧
+	# 味方
 
 	player = User.new(name: '', max_hp: 300, hp: 300, offense: 150, defense: 100)
 
-
-	slime = Enemy.new(name: 'スライム', max_hp: 150, hp: 150, offense: 100, defense: 100)
+    # 敵
+	slime   = Enemy.new(name: 'スライム', max_hp: 150, hp: 150, offense: 100, defense: 100)
+    sanzoku = Enemy.new(name: 'さんぞく', max_hp: 300, hp: 300, offense: 150, defense: 150)
+    
     
     puts "ようこそ Rubyダンジョン へ"
     puts "８文字以内で あなたのなまえを きめてください\n"
@@ -65,7 +68,6 @@ def dungeon
         TEXT
     while true
         n = gets.to_i # 選択肢ナンバーの取得
-
         case n
             when 1
                 player.battle(slime)
@@ -74,7 +76,32 @@ def dungeon
             when 2
                 puts "さきへ　すすんでいく\n"
                 l
-                break
+                puts sanzoku_event =<<~TEXT
+                あたりが さらに くらくなってきた
+                おくのほうに ひとが いるようだ
+                
+                1, はなしかけてみる
+                2, きゅうに おそいかかる
+                #{l}
+                TEXT
+                n = gets.to_i
+                case n
+                    when 1
+                        puts sanzoku_event_=<<~TEXT
+                        さんぞく： なんだきさま しにてえのか
+                        さんぞくは きゅうに おそいかかってきた
+                        #{l}
+                        TEXT
+                        player.battle(sanzoku)
+                    when 2
+                        puts sanzoku_event_break =<<~TEXT
+                        さんぞく： うおーーなんだきさまーーー
+                        さんぞくは しんだ
+                        TEXT
+                    else
+                        e
+                        redo
+                end
             when 3
                 puts "たからばこの　あけた"
                 puts "#{yakuso.name}を　てにいれた"
@@ -86,6 +113,7 @@ def dungeon
                 redo
             else
                 e
+                redo
         end
     end
 end
