@@ -1,4 +1,9 @@
-<h1>ログイン後の画面になりました。</h1>
+
+<% if flash[:notice] %>
+<div class="login-flash">
+    <%= flash[:notice] %>
+</div>
+<% end %>
 <a href="/">ログイン画面に戻る</a>
 
 <% User.all.each do |u| %>

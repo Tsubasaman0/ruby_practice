@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'active_record'
+require 'rack/flash'
 
 enable :sessions
 
@@ -8,6 +9,10 @@ ActiveRecord::Base.establish_connection(
     adapter: 'sqlite3',
     database: './users.db'
 )
+
+configure do
+    use Rack::Flash
+end
 
 class User < ActiveRecord::Base
     validates :name, presence: true
@@ -20,8 +25,12 @@ get '/' do
 end
 
 post '/signup' do
-    @user = User.find_by(name: params[:user], password: params[:password])
+    @user = User.find_by(
+        name: params[:user],
+        password: params[:password]
+        )
      if @user
+        flash[:notice] = "ログインに成功しました"
         redirect to '/top'
      else
         erb :index
